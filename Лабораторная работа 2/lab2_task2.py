@@ -1,12 +1,20 @@
 BOOKS_DATABASE = [
-    {"id": 1, "name": "test_name_1", "pages": 200},
-    {"id": 2, "name": "test_name_2", "pages": 400}
+    {
+        "id": 1,
+        "name": "test_name_1",
+        "pages": 200,
+    },
+    {
+        "id": 2,
+        "name": "test_name_2",
+        "pages": 400,
+    }
 ]
 
 
 # TODO: написать класс Book
 class Book:
-    def init(self, id_, name, pages):
+    def __init__(self, id_, name, pages):
         """
         Инициализация книги.
 
@@ -18,14 +26,14 @@ class Book:
         self.name = name
         self.pages = pages
 
-    def str(self):
+    def __str__(self) -> str:
         """
         Возвращает строковое представление книги в виде:
         Книга "название_книги"
         """
         return f'Книга "{self.name}"'
 
-    def repr(self):
+    def __repr__(self) -> str:
         """
         Возвращает строку, которая может быть использована для инициализации такого же экземпляра:
         Book(id_=1, name='test_name_1', pages=200)
@@ -35,7 +43,7 @@ class Book:
 
 # TODO: написать класс Library
 class Library:
-    def init(self, books=None):
+    def __init__(self, books=None):
         """
         Инициализация библиотеки.
 
@@ -71,14 +79,12 @@ class Library:
         raise ValueError('Книги с запрашиваемым id не существует')
 
 
-if name == 'main':
+if __name__ == '__main__':
     empty_library = Library()  # инициализируем пустую библиотеку
     print(empty_library.get_next_book_id())  # проверяем следующий id для пустой библиотеки
 
-    list_books = [
-        Book(id_=book_dict["id"], name=book_dict["name"], pages=book_dict["pages"])
-        for book_dict in BOOKS_DATABASE
-    ]
+    list_books = [Book(id_=book_dict["id"], name=book_dict["name"], pages=book_dict["pages"]) for book_dict in
+                  BOOKS_DATABASE]
     library_with_books = Library(books=list_books)  # инициализируем библиотеку с книгами
     print(library_with_books.get_next_book_id())  # проверяем следующий id для непустой библиотеки
 
