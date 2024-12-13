@@ -38,7 +38,7 @@ class Book:
         Возвращает строку, которая может быть использована для инициализации такого же экземпляра:
         Book(id_=1, name='test_name_1', pages=200)
         """
-        return f"Book(id_={self.id}, name=\'{self.name}\', pages={self.pages})"
+        return f'Book(id_={self.id}, name=\'{self.name}\', pages={self.pages})'
 
 
 # TODO: написать класс Library
